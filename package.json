@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"description": "A place to play with GitHub actions",
 	"devDependencies": {
+		"@wordpress/stylelint-config": "^19.1.0",
 		"autoprefixer": "^10.3.1",
 		"postcss": "^8.3.6",
 		"postcss-cli": "^8.3.1",
@@ -10,8 +11,7 @@
 		"postcss-generate-asset-php": "^0.0.1",
 		"postcss-import": "^14.0.2",
 		"precss": "^4.0.0",
-		"stylelint": "^13.13.1",
-		"stylelint-config-wordpress": "^17.0.0"
+		"stylelint": "^13.13.1"
 	},
 	"scripts": {
 		"build": "npm run stylelint & npm run postcss:main",
