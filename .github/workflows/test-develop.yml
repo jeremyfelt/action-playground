@@ -24,6 +24,9 @@ jobs:
       shell: bash
       run: |
         RESULT=$(git status)
+        RESULT="${RESULT//'%'/'%25'}"
+        RESULT="${RESULT//$'\n'/'%0A'}"
+        RESULT="${RESULT//$'\r'/'%0D'}"
         echo "::set-output name=changes::$RESULT"
         if [[ $RESULT == *"Changes not staged"* || $RESULT == *"Untracked files"* ]]; then
           git status
