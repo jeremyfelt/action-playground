@@ -17,6 +17,14 @@ jobs:
       with:
         node-version: 'lts/*'
     - run: npm ci
-    - run: npm run build --if-present
-    - run: git diff
-    - run: git status
+    - name: Run build process(es)
+      run: npm run build --if-present
+    - name: Check Git status
+      id: git
+      shell: bash
+      run: |
+        RESULT=$(git status)
+        if [[ $RESULT == *"Changes not staged"* || $RESULT == *"Untracked files"* ]]; then
+          echo "Dirty working directory"
+          exit 1
+        fi
