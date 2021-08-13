@@ -29,7 +29,7 @@ jobs:
         RESULT="${RESULT//$'\r'/'%0D'}"
         echo "::set-output name=changes::$RESULT"
         echo "::set-output name=nodeVersion::$(node --version)"
-        echo "::set-output name="npmVersion::$(npm --version)"
+        echo "::set-output name=npmVersion::$(npm --version)"
         if [[ $RESULT == *"Changes not staged"* || $RESULT == *"Untracked files"* ]]; then
           exit 1
         fi
