@@ -28,8 +28,9 @@ jobs:
         RESULT="${RESULT//$'\n'/'%0A'}"
         RESULT="${RESULT//$'\r'/'%0D'}"
         echo "::set-output name=changes::$RESULT"
+        echo "::set-output name=nodeVersion::$(node --version)"
+        echo "::set-output name="npmVersion::$(npm --version)"
         if [[ $RESULT == *"Changes not staged"* || $RESULT == *"Untracked files"* ]]; then
-          git status
           exit 1
         fi
     - name: Comment on pull request
@@ -42,6 +43,10 @@ jobs:
           \`\`\`
           ${{ steps.git.outputs.changes }}
           \`\`\`
+
+          This was generated with:
+          * Node ${{ steps.git.outputs.nodeVersion }}
+          * NPM ${{ steps.git.outputs.npmVersion }}
           `;
 
           github.issues.createComment({
