@@ -23,7 +23,7 @@ jobs:
       id: git
       shell: bash
       run: |
-        RESULT="$(git status)""
+        RESULT="$(git status)"
         if [[ $RESULT == *"Changes not staged"* || $RESULT == *"Untracked files"* ]]; then
           echo "::set-output name=changes::$RESULT"
           exit 1
