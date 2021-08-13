@@ -1,0 +1,86 @@
+/*
+ Theme Name:   A stylesheet
+ Version:      0.0.2
+*/
+
+/**
+ * From https://github.com/hankchizljaw/modern-css-reset and https://github.com/csstools/normalize.css/blob/main/evergreen.css
+ */
+
+/* Correct the line height in all browsers */
+
+:where(html) {
+	line-height: 1.15; /* 1 */
+}
+
+/* Set core body defaults */
+
+body {
+	box-sizing: border-box;
+	line-height: 1.55;
+	min-height: 100vh;
+	margin: 0;
+	scroll-behavior: smooth;
+	text-rendering: optimizeSpeed;
+}
+
+/* Remove default padding */
+
+:where(ul[class]) {
+	list-style: none;
+	padding: 0;
+}
+
+/* Box sizing rules */
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+/* A elements that don't have a class get default styles */
+
+a:not([class]) {
+	-webkit-text-decoration-skip: ink;
+	        text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+
+img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+/* Inherit fonts for inputs and buttons */
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/* Remove, if preference, all animations and transitions */
+
+@media (prefers-reduced-motion: reduce) {
+
+	* {
+		-webkit-animation-duration: 0.01ms !important;
+		        animation-duration: 0.01ms !important;
+		-webkit-animation-iteration-count: 1 !important;
+		        animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* Wrap pre tag content */
+
+pre {
+	overflow-x: auto;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
