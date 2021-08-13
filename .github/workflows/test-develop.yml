@@ -32,4 +32,10 @@ jobs:
       if: failure()
       uses: actions/github-script@v4
       with:
-        script: console.log(context)
+        script: |
+          github.issues.createComment({
+            issue_number: context.pull_request.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: 'Please update your build configuration locally and check `git status` for any missed changes.'
+          })
