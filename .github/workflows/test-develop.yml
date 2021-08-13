@@ -30,6 +30,6 @@ jobs:
         fi
     - name: Comment on pull request
       if: failure()
-        uses: actions/github-script@v4
-        with:
-          script: console.log(context)
+      uses: actions/github-script@v4
+      with:
+        script: console.log(context)
