@@ -26,6 +26,7 @@ jobs:
         RESULT=$(git status)
         if [[ $RESULT == *"Changes not staged"* || $RESULT == *"Untracked files"* ]]; then
           echo "Dirty working directory"
+          echo "::set-output name=changes::$RESULT"
           exit 1
         fi
     - name: Comment on pull request
@@ -36,5 +37,5 @@ jobs:
           github.issues.createComment({
             ...context.repo,
             issue_number: context.payload.pull_request.number,
-            body: 'Please update your build configuration locally and check `git status` for any missed changes.'
+            body: 'Please update your build configuration locally and check `git status` for any missed changes. ```${{ steps.git.outputs.changes }}```'
           })
