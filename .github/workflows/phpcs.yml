@@ -1,0 +1,23 @@
+name: PHPCS Scan
+
+on: [ pull_request ]
+
+jobs:
+  scan:
+    name: Scan PHP code
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout project
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+    - name: Run PHPCS
+      uses: rtCamp/action-phpcs-code-review@v2
+      env:
+        GH_BOT_TOKEN: ${{ secrets.AMIABOT_BOT_TOKEN }}
+        SKIP_FOLDERS: "tests,.github"
+        PHPCS_SNIFFS_EXCLUDE: "WordPress.Files.FileName"
+      with:
+        args: "WordPress-Extra"
