@@ -18,5 +18,6 @@ jobs:
       env:
         GH_BOT_TOKEN: ${{ secrets.AMIABOT_BOT_TOKEN }}
         SKIP_FOLDERS: "tests,.github"
+        PHPCS_SNIFFS_EXCLUDE: "WordPress.Files.FileName"
       with:
         args: "WordPress-Extra"
